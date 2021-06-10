@@ -42,12 +42,12 @@ output  region {
 
 
     
-#     output "private_subnet1" {
-#         value = module.t.private_subnets[0]
-#     }
-#      output "private_subnet2" {
-#         value = module.t.private_subnets[1]
-#     }
-#      output "private_subnet3" {
-#         value = module.t.private_subnets[2]
-#     }
+    output "private_subnet1" {
+        value = module.t.private_subnets[0]
+    }
+     output "private_subnet2" {
+        value = module.t.private_subnets[1]
+    }
+     output "private_subnet3" {
+        value = module.t.private_subnets[2]
+    }
