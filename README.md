@@ -5,6 +5,7 @@ This module creates VPC with 3 public subnets ,3 private subnets ,IG and NAT.
 
 ```
 
+
 module "t-vpc" {
   source = "Taherasharifi/vpc/aws"
   
@@ -60,4 +61,7 @@ output  region {
      output "private_subnet3" {
         value = module.t.private_subnets[2]
     }
+
+
+
 ```
