@@ -31,7 +31,7 @@ public-route-table-name  = "Public_rout_table"
 
 }
 
-# outputs @@@@@@@@@@@@@@@@@@@@
+# -----------outputs-----------------
 output  region {
     value = module.t-vpc.region
 }
