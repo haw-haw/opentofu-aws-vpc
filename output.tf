@@ -2,6 +2,10 @@ output  region {
     value = var.region
 }
 
+output  profile {
+    value = var.profile
+}
+
 output "AZ" {
     value = data.aws_availability_zones.available.names
 }
