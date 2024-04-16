@@ -8,7 +8,7 @@ resource "aws_security_group" "allow_base" {
   vpc_id      = aws_vpc.main.id
 
   tags = {
-    Name = "allow_base"
+    Name = "base"
   }
 }
 

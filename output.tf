@@ -25,3 +25,7 @@ output "private_subnets" {
     aws_subnet.private_subnet3.id,]
 
 }
+
+output "security_groups" {
+    value = aws_security_group.allow_base
+}
