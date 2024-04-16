@@ -29,7 +29,7 @@ tags = {
 
 
 resource "aws_eip" "nat" {
-  vpc      = true
+  domain   = "vpc"
 }
 
 resource "aws_nat_gateway" "nat" {

@@ -56,9 +56,21 @@ resource "aws_vpc_security_group_ingress_rule" "allow_https_ipv6" {
   to_port           = 443
 }
 
-resource "aws_vpc_security_group_ingress_rule" "allow_base_IPs_ipv4" {
+resource "aws_vpc_security_group_ingress_rule" "allow_base_10_ipv4" {
   security_group_id = aws_security_group.allow_base.id
-  cidr_ipv4         = ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]
+  cidr_ipv4         = "10.0.0.0/8"
+  ip_protocol       = "-1"
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_base_172_ipv4" {
+  security_group_id = aws_security_group.allow_base.id
+  cidr_ipv4         = "172.16.0.0/12"
+  ip_protocol       = "-1"
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_base_192_ipv4" {
+  security_group_id = aws_security_group.allow_base.id
+  cidr_ipv4         = "192.168.0.0/16"
   ip_protocol       = "-1"
 }
 
