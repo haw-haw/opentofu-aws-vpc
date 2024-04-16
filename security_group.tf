@@ -1,7 +1,3 @@
-locals {
-    ports = [22, 80, 443]
-}
-
 resource "aws_security_group" "allow_base" {
   name        = "allow_base"
   description = "Allow basic inbound traffic and all outbound traffic"
@@ -12,22 +8,52 @@ resource "aws_security_group" "allow_base" {
   }
 }
 
-for (port in local.ports) {
-  resource "aws_vpc_security_group_ingress_rule" "allow_base_${port}_ipv4" {
-    security_group_id = aws_security_group.allow_base.id
-    cidr_ipv4         = "0.0.0.0/0"
-    from_port         = ${port}
-    ip_protocol       = "tcp"
-    to_port           = ${port}
-  }
+resource "aws_vpc_security_group_ingress_rule" "allow_ssh_ipv4" {
+  security_group_id = aws_security_group.allow_base.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 22
+  ip_protocol       = "tcp"
+  to_port           = 22
+}
 
-  resource "aws_vpc_security_group_ingress_rule" "allow_base_${port}_ipv6" {
-    security_group_id = aws_security_group.allow_base.id
-    cidr_ipv6         = "::/0"
-    from_port         = ${port}
-    ip_protocol       = "tcp"
-    to_port           = ${port}
-  }
+resource "aws_vpc_security_group_ingress_rule" "allow_ssh_ipv6" {
+  security_group_id = aws_security_group.allow_base.id
+  cidr_ipv6         = "::/0"
+  from_port         = 22
+  ip_protocol       = "tcp"
+  to_port           = 22
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_http_ipv4" {
+  security_group_id = aws_security_group.allow_base.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 80
+  ip_protocol       = "tcp"
+  to_port           = 80
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_http_ipv6" {
+  security_group_id = aws_security_group.allow_base.id
+  cidr_ipv6         = "::/0"
+  from_port         = 80
+  ip_protocol       = "tcp"
+  to_port           = 80
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_https_ipv4" {
+  security_group_id = aws_security_group.allow_base.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 443
+  ip_protocol       = "tcp"
+  to_port           = 443
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_https_ipv6" {
+  security_group_id = aws_security_group.allow_base.id
+  cidr_ipv6         = "::/0"
+  from_port         = 443
+  ip_protocol       = "tcp"
+  to_port           = 443
 }
 
 resource "aws_vpc_security_group_ingress_rule" "allow_base_IPs_ipv4" {
